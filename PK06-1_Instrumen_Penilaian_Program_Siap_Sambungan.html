@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PK06-1 INSTRUMEN PENILAIAN PROGRAM</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gov: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bccadc',
+                            600: '#103f6e',
+                            700: '#0b2e52',
+                            800: '#071f38',
+                            gold: '#d4af37',
+                            goldHover: '#b89628',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom smooth focus states and subtle animations */
+        .rating-option {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .rating-option:hover {
+            transform: translateY(-1px);
+        }
+        .rating-option:active {
+            transform: translateY(0);
+        }
+        /* Radio hidden visual replacement */
+        input[type="radio"]:checked + label {
+            background-color: #103f6e;
+            color: #ffffff;
+            border-color: #103f6e;
+            box-shadow: 0 4px 6px -1px rgba(16, 63, 110, 0.25), 0 2px 4px -1px rgba(16, 63, 110, 0.1);
+        }
+        .progress-bar-fill {
+            transition: width 0.4s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-gov-600 selection:text-white">
+
+    <!-- Top Government Header Accent Bar -->
+    <header class="bg-gov-800 text-white shadow-md border-b-4 border-gov-gold">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                    <i data-lucide="file-check-2" class="w-6 h-6 text-gov-gold"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold tracking-wider text-gov-gold uppercase block">Sistem Penilaian Program</span>
+                    <h1 class="text-lg md:text-xl font-bold tracking-tight">PK06-1 INSTRUMEN PENILAIAN PROGRAM</h1>
+                </div>
+            </div>
+            <div class="hidden sm:flex items-center space-x-2 text-xs bg-gov-700/60 px-3 py-1.5 rounded-full border border-gov-600">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                <span class="text-slate-200">Borang Rasmi Penilaian</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Progress Bar Container -->
+    <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-2.5">
+            <div class="flex justify-between items-center text-xs font-semibold text-slate-600 mb-1.5">
+                <span class="flex items-center gap-1.5">
+                    <i data-lucide="list-checks" class="w-4 h-4 text-gov-600"></i>
+                    Kemajuan Borang
+                </span>
+                <span id="progress-text" class="text-gov-600 font-bold">0% Selesai (0/21)</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                <div id="progress-bar" class="progress-bar-fill bg-gov-600 h-full w-0 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 py-6 w-full flex-grow">
+        
+        <!-- Header Hero Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8 mb-6 relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-gov-50 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gov-50 border border-gov-100 text-gov-700 text-xs font-semibold mb-3">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    Borang Kualiti PK06-1
+                </div>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-gov-800 tracking-tight mb-2">
+                    PK06-1 INSTRUMEN PENILAIAN PROGRAM
+                </h1>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    Borang maklum balas bagi menilai keberkesanan program, bengkel, kursus, atau seminar yang dijalankan.
+                </p>
+
+                <!-- Rating Guide Banner -->
+                <div class="mt-6 pt-5 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs">
+                    <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-700 block">TB</span>
+                        <span class="text-slate-500 text-[11px]">Tidak Berkenaan</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-700 block">1</span>
+                        <span class="text-slate-500 text-[11px]">Sangat Lemah</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-700 block">2</span>
+                        <span class="text-slate-500 text-[11px]">Lemah</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-700 block">3</span>
+                        <span class="text-slate-500 text-[11px]">Sederhana</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-700 block">4</span>
+                        <span class="text-slate-500 text-[11px]">Baik</span>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="font-bold text-slate-700 block">5</span>
+                        <span class="text-slate-500 text-[11px]">Cemerlang</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Validation Alert Banner -->
+        <div id="validation-summary" class="hidden mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-xl shadow-sm">
+            <div class="flex items-start gap-3">
+                <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 shrink-0 mt-0.5"></i>
+                <div>
+                    <h3 class="text-sm font-bold text-red-800">Sila lengkapkan semua ruangan bertanda (*)</h3>
+                    <p class="text-xs text-red-700 mt-0.5">Terdapat soalan wajib yang belum dijawab. Sila semak semula soalan yang diserlahkan dalam warna merah.</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="evaluation-form" novalidate class="space-y-6">
+
+            <!-- SECTION 1: Maklumat -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8" id="sec-maklumat">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
+                    <div class="w-8 h-8 rounded-lg bg-gov-600 text-white flex items-center justify-center font-bold text-sm">
+                        1
+                    </div>
+                    <h2 class="text-xl font-bold text-gov-800">Maklumat</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Nama Program -->
+                    <div class="md:col-span-2 form-group" id="group-namaProgram">
+                        <label for="namaProgram" class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            Nama Program <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="namaProgram" name="namaProgram" required
+                            placeholder="Masukkan nama program, bengkel, kursus, atau seminar"
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gov-600 focus:border-gov-600 transition-colors text-slate-800 bg-slate-50/50 focus:bg-white text-sm">
+                        <span class="error-msg text-xs text-red-500 hidden mt-1">Ruangan ini wajib diisi.</span>
+                    </div>
+
+                    <!-- Tempat -->
+                    <div class="form-group" id="group-tempat">
+                        <label for="tempat" class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            Tempat <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="tempat" name="tempat" required
+                            placeholder="Lokasi atau dewan program"
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gov-600 focus:border-gov-600 transition-colors text-slate-800 bg-slate-50/50 focus:bg-white text-sm">
+                        <span class="error-msg text-xs text-red-500 hidden mt-1">Ruangan ini wajib diisi.</span>
+                    </div>
+
+                    <!-- Tarikh -->
+                    <div class="form-group" id="group-tarikh">
+                        <label for="tarikh" class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            Tarikh <span class="text-red-500">*</span>
+                        </label>
+                        <input type="date" id="tarikh" name="tarikh" required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gov-600 focus:border-gov-600 transition-colors text-slate-800 bg-slate-50/50 focus:bg-white text-sm">
+                        <span class="error-msg text-xs text-red-500 hidden mt-1">Ruangan ini wajib diisi.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Urus Setia Dan Pengurusan -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8" id="sec-urus-setia">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
+                    <div class="w-8 h-8 rounded-lg bg-gov-600 text-white flex items-center justify-center font-bold text-sm">
+                        2
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gov-800">
+                            Urus Setia Dan Pengurusan <span class="text-red-500">*</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-pendaftaranPesertaDisediakan">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            1. Pendaftaran peserta disediakan <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="pendaftaranPesertaDisediakan">
+                            <!-- Options generated dynamically/declaratively -->
+                        </div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-maklumatYangDisediakanMudah">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            2. Maklumat yang disediakan mudah <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="maklumatYangDisediakanMudah"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-pengurusanTeratur">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            3. Pengurusan teratur <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="pengurusanTeratur"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-urusSetiaSentiasaMembantuSaya">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            4. Urus setia sentiasa membantu saya <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="urusSetiaSentiasaMembantuSaya"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Lokasi dan Fasiliti -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8" id="sec-lokasi">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
+                    <div class="w-8 h-8 rounded-lg bg-gov-600 text-white flex items-center justify-center font-bold text-sm">
+                        3
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gov-800">
+                            Lokasi dan Fasiliti <span class="text-red-500">*</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-tempatSesuai">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            1. Tempat Sesuai <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="tempatSesuai"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-dewanSesuai">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            2. Dewan sesuai <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="dewanSesuai"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-peralatanDanAlatTulisDisediakan">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            3. Peralatan dan alat tulis disediakan <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="peralatanDanAlatTulisDisediakan"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-dewanMakanBersihDanSelesa">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            4. Dewan makan bersih dan selesa <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="dewanMakanBersihDanSelesa"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-kualitiMakananBaik">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            5. Kualiti makanan baik <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="kualitiMakananBaik"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-makananYangDisediakanMencukupi">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            6. Makanan yang disediakan mencukupi <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="makananYangDisediakanMencukupi"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: Personal -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8" id="sec-personal">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
+                    <div class="w-8 h-8 rounded-lg bg-gov-600 text-white flex items-center justify-center font-bold text-sm">
+                        4
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gov-800">
+                            Personal <span class="text-red-500">*</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-programMampuMeningkatkanPrestasiKerjaSaya">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            1. Program ini mampu meningkatkan prestasi kerja saya <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="programMampuMeningkatkanPrestasiKerjaSaya"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-programMampuMemberiKeyakinanKepadaSayaDalamMemberiPerkhidmatan">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            2. Program ini mampu memberi keyakinan kepada saya dalam memberi perkhidmatan <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="programMampuMemberiKeyakinanKepadaSayaDalamMemberiPerkhidmatan"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-tempohMasaProgramMencukupi">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            3. Tempoh masa program mencukupi <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="tempohMasaProgramMencukupi"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-sayaBersediaUntukMemberiKursusDalaman">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            4. Saya bersedia untuk memberi kursus dalaman <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="sayaBersediaUntukMemberiKursusDalaman"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: Bahan -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8" id="sec-bahan">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
+                    <div class="w-8 h-8 rounded-lg bg-gov-600 text-white flex items-center justify-center font-bold text-sm">
+                        5
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gov-800">
+                            Bahan <span class="text-red-500">*</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-berguna">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            1. Berguna <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="berguna"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-membantu">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            2. Membantu <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="membantu"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-mudahDifahami">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            3. Mudah difahami <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="mudahDifahami"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="question-row p-4 rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors bg-slate-50/30" id="group-jelas">
+                        <p class="text-sm font-medium text-slate-800 mb-3">
+                            4. Jelas <span class="text-red-500">*</span>
+                        </p>
+                        <div class="rating-group flex flex-wrap gap-2 md:gap-3" data-name="jelas"></div>
+                        <span class="error-msg text-xs text-red-500 hidden mt-2 block">Sila pilih satu jawapan.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: Cadangan / Ulasan -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8" id="sec-cadangan">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200">
+                    <div class="w-8 h-8 rounded-lg bg-gov-600 text-white flex items-center justify-center font-bold text-sm">
+                        6
+                    </div>
+                    <h2 class="text-xl font-bold text-gov-800">Cadangan / Ulasan</h2>
+                </div>
+
+                <div class="form-group" id="group-cadanganUlasan">
+                    <label for="cadanganUlasan" class="block text-sm font-medium text-slate-700 mb-2">
+                        Sila kemukakan cadangan atau ulasan anda untuk penambahbaikan program pada masa hadapan (Pilihan):
+                    </label>
+                    <textarea id="cadanganUlasan" name="cadanganUlasan" rows="4"
+                        placeholder="Tulis cadangan atau ulasan anda di sini..."
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-gov-600 focus:border-gov-600 transition-colors text-slate-800 bg-slate-50/50 focus:bg-white text-sm resize-y"></textarea>
+                </div>
+            </section>
+
+            <!-- SUBMIT BUTTON AREA -->
+            <div class="pt-4 pb-8 flex flex-col items-center">
+                <button type="submit" id="submit-btn"
+                    class="w-full sm:w-auto min-w-[280px] bg-gov-600 hover:bg-gov-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 text-base active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    <span>HANTAR PENILAIAN</span>
+                </button>
+                <p class="text-xs text-slate-500 mt-3 flex items-center gap-1">
+                    <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                    Pastikan semua maklumat bertanda (*) telah diisi sebelum menghantar.
+                </p>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- SUCCESS MODAL OVERLAY -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 md:p-8 shadow-2xl text-center transform transition-all">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-emerald-50">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">Penilaian Berjaya Dihantar!</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                Terima kasih atas maklum balas anda. Maklumat ini amat berguna bagi tujuan penambahbaikan program pada masa akan datang.
+            </p>
+            <button onclick="resetForm()" class="bg-gov-600 hover:bg-gov-700 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm w-full sm:w-auto">
+                Hantar Penilaian Baharu
+            </button>
+        </div>
+    </div>
+
+    <!-- LOADING MODAL OVERLAY -->
+    <div id="loading-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center">
+            <div class="w-12 h-12 border-4 border-gov-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <h3 class="text-lg font-bold text-slate-800 mb-1">Sedang Menghantar...</h3>
+            <p class="text-xs text-slate-500">Sila tunggu sebentar sementara maklum balas anda direkodkan.</p>
+        </div>
+    </div>
+
+    <!-- ERROR MODAL OVERLAY -->
+    <div id="error-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 md:p-8 shadow-2xl text-center">
+            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-red-50">
+                <i data-lucide="x-circle" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Ralat Semasa Penghantaran</h3>
+            <p id="error-message-text" class="text-slate-600 text-sm mb-6 leading-relaxed">
+                Gagal menghubungi pelayan. Sila pastikan sambungan internet anda stabil atau cuba lagi sebentar lagi.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <button onclick="closeErrorModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-2.5 px-5 rounded-xl transition-colors text-sm">
+                    Tutup
+                </button>
+                <button onclick="retrySubmission()" class="bg-gov-600 hover:bg-gov-700 text-white font-semibold py-2.5 px-5 rounded-xl transition-colors text-sm">
+                    Cuba Lagi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+            <p class="font-medium text-slate-300">PK06-1 INSTRUMEN PENILAIAN PROGRAM</p>
+            <p>© Hak Cipta Terpelihara. Sistem Pengurusan Kualiti Penilaian Program.</p>
+        </div>
+    </footer>
+
+    <script>
+        // =========================================================================
+        // CONFIGURATION SECTION
+        // Paste your Google Apps Script Web App Deployment URL below:
+        // =========================================================================
+        // Masukkan URL Web App Google Apps Script yang telah di-deploy.
+        // Contoh: https://script.google.com/macros/s/XXXXXXXX/exec
+        const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwsOx98eJTH9u8boPz1oLWV51vqdONBwl0XAmuCBJrMB0_YI782VcZS1XX4WlNVGzJI/exec";
+
+        // Required field list matching exact keys
+        const REQUIRED_TEXT_FIELDS = ['namaProgram', 'tempat', 'tarikh'];
+        
+        const RATING_FIELDS = [
+            'pendaftaranPesertaDisediakan',
+            'maklumatYangDisediakanMudah',
+            'pengurusanTeratur',
+            'urusSetiaSentiasaMembantuSaya',
+            'tempatSesuai',
+            'dewanSesuai',
+            'peralatanDanAlatTulisDisediakan',
+            'dewanMakanBersihDanSelesa',
+            'kualitiMakananBaik',
+            'makananYangDisediakanMencukupi',
+            'programMampuMeningkatkanPrestasiKerjaSaya',
+            'programMampuMemberiKeyakinanKepadaSayaDalamMemberiPerkhidmatan',
+            'tempohMasaProgramMencukupi',
+            'sayaBersediaUntukMemberiKursusDalaman',
+            'berguna',
+            'membantu',
+            'mudahDifahami',
+            'jelas'
+        ];
+
+        const RATING_OPTIONS = ['TB', '1', '2', '3', '4', '5'];
+        const TOTAL_REQUIRED_ITEMS = REQUIRED_TEXT_FIELDS.length + RATING_FIELDS.length;
+
+        // Initialize rating option buttons
+        function buildRatingGroups() {
+            const containers = document.querySelectorAll('.rating-group');
+            containers.forEach(container => {
+                const fieldName = container.getAttribute('data-name');
+                let html = '';
+                
+                RATING_OPTIONS.forEach((opt, idx) => {
+                    const id = `rating-${fieldName}-${opt}`;
+                    html += `
+                        <div class="flex-1 min-w-[50px] sm:min-w-[65px]">
+                            <input type="radio" id="${id}" name="${fieldName}" value="${opt}" class="sr-only rating-input" required>
+                            <label for="${id}" 
+                                class="rating-option flex items-center justify-center font-bold text-sm py-2.5 px-3 rounded-xl border border-slate-200 bg-white text-slate-700 cursor-pointer hover:bg-slate-100 transition-all select-none text-center">
+                                ${opt}
+                            </label>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            });
+        }
+
+        // Initialize Lucide Icons
+        window.addEventListener('DOMContentLoaded', () => {
+            buildRatingGroups();
+            lucide.createIcons();
+            attachEventListeners();
+            updateProgress();
+            
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('tarikh').value = today;
+            updateProgress();
+        });
+
+        // Track and Update Progress Percentage
+        function updateProgress() {
+            let completedCount = 0;
+
+            // Check text inputs
+            REQUIRED_TEXT_FIELDS.forEach(field => {
+                const el = document.getElementById(field);
+                if (el && el.value.trim() !== '') {
+                    completedCount++;
+                }
+            });
+
+            // Check rating radios
+            RATING_FIELDS.forEach(field => {
+                const checked = document.querySelector(`input[name="${field}"]:checked`);
+                if (checked) {
+                    completedCount++;
+                }
+            });
+
+            const percentage = Math.round((completedCount / TOTAL_REQUIRED_ITEMS) * 100);
+            
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${percentage}% Selesai (${completedCount}/${TOTAL_REQUIRED_ITEMS})`;
+
+            // Change progress bar colors based on progress
+            if (percentage < 30) {
+                progressBar.className = 'progress-bar-fill h-full w-0 rounded-full bg-slate-400';
+            } else if (percentage < 80) {
+                progressBar.className = 'progress-bar-fill h-full w-0 rounded-full bg-amber-500';
+            } else {
+                progressBar.className = 'progress-bar-fill h-full w-0 rounded-full bg-gov-600';
+            }
+        }
+
+        function attachEventListeners() {
+            // Listen to text field inputs
+            REQUIRED_TEXT_FIELDS.forEach(field => {
+                const el = document.getElementById(field);
+                if (el) {
+                    el.addEventListener('input', () => {
+                        clearError(`group-${field}`);
+                        updateProgress();
+                    });
+                }
+            });
+
+            // Listen to radio changes
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const fieldName = e.target.name;
+                    clearError(`group-${fieldName}`);
+                    updateProgress();
+                });
+            });
+        }
+
+        function clearError(groupId) {
+            const group = document.getElementById(groupId);
+            if (group) {
+                group.classList.remove('ring-2', 'ring-red-400', 'bg-red-50/30');
+                const errMsg = group.querySelector('.error-msg');
+                if (errMsg) errMsg.classList.add('hidden');
+            }
+            
+            // Hide global validation summary if no more errors visible
+            const visibleErrors = document.querySelectorAll('.error-msg:not(.hidden)');
+            if (visibleErrors.length === 0) {
+                document.getElementById('validation-summary').classList.add('hidden');
+            }
+        }
+
+        function validateForm() {
+            let isValid = true;
+            let firstErrorElement = null;
+
+            // Validate Text Fields
+            REQUIRED_TEXT_FIELDS.forEach(field => {
+                const el = document.getElementById(field);
+                const group = document.getElementById(`group-${field}`);
+                const errMsg = group.querySelector('.error-msg');
+
+                if (!el || el.value.trim() === '') {
+                    isValid = false;
+                    group.classList.add('ring-2', 'ring-red-400', 'bg-red-50/30');
+                    if (errMsg) errMsg.classList.remove('hidden');
+                    if (!firstErrorElement) firstErrorElement = group;
+                } else {
+                    group.classList.remove('ring-2', 'ring-red-400', 'bg-red-50/30');
+                    if (errMsg) errMsg.classList.add('hidden');
+                }
+            });
+
+            // Validate Rating Radio Fields
+            RATING_FIELDS.forEach(field => {
+                const checked = document.querySelector(`input[name="${field}"]:checked`);
+                const group = document.getElementById(`group-${field}`);
+                const errMsg = group.querySelector('.error-msg');
+
+                if (!checked) {
+                    isValid = false;
+                    group.classList.add('ring-2', 'ring-red-400', 'bg-red-50/30');
+                    if (errMsg) errMsg.classList.remove('hidden');
+                    if (!firstErrorElement) firstErrorElement = group;
+                } else {
+                    group.classList.remove('ring-2', 'ring-red-400', 'bg-red-50/30');
+                    if (errMsg) errMsg.classList.add('hidden');
+                }
+            });
+
+            if (!isValid) {
+                document.getElementById('validation-summary').classList.remove('hidden');
+                if (firstErrorElement) {
+                    firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                document.getElementById('validation-summary').classList.add('hidden');
+            }
+
+            return isValid;
+        }
+
+        // Form Submit Handler
+        document.getElementById('evaluation-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            if (!validateForm()) {
+                return;
+            }
+
+            // Construct payload matching exact JSON schema
+            const payload = {
+                timestamp: new Date().toISOString(),
+                namaProgram: document.getElementById('namaProgram').value.trim(),
+                tempat: document.getElementById('tempat').value.trim(),
+                tarikh: document.getElementById('tarikh').value,
+
+                pendaftaranPesertaDisediakan: getRadioValue('pendaftaranPesertaDisediakan'),
+                maklumatYangDisediakanMudah: getRadioValue('maklumatYangDisediakanMudah'),
+                pengurusanTeratur: getRadioValue('pengurusanTeratur'),
+                urusSetiaSentiasaMembantuSaya: getRadioValue('urusSetiaSentiasaMembantuSaya'),
+
+                tempatSesuai: getRadioValue('tempatSesuai'),
+                dewanSesuai: getRadioValue('dewanSesuai'),
+                peralatanDanAlatTulisDisediakan: getRadioValue('peralatanDanAlatTulisDisediakan'),
+                dewanMakanBersihDanSelesa: getRadioValue('dewanMakanBersihDanSelesa'),
+                kualitiMakananBaik: getRadioValue('kualitiMakananBaik'),
+                makananYangDisediakanMencukupi: getRadioValue('makananYangDisediakanMencukupi'),
+
+                programMampuMeningkatkanPrestasiKerjaSaya: getRadioValue('programMampuMeningkatkanPrestasiKerjaSaya'),
+                programMampuMemberiKeyakinanKepadaSayaDalamMemberiPerkhidmatan: getRadioValue('programMampuMemberiKeyakinanKepadaSayaDalamMemberiPerkhidmatan'),
+                tempohMasaProgramMencukupi: getRadioValue('tempohMasaProgramMencukupi'),
+                sayaBersediaUntukMemberiKursusDalaman: getRadioValue('sayaBersediaUntukMemberiKursusDalaman'),
+
+                berguna: getRadioValue('berguna'),
+                membantu: getRadioValue('membantu'),
+                mudahDifahami: getRadioValue('mudahDifahami'),
+                jelas: getRadioValue('jelas'),
+
+                cadanganUlasan: document.getElementById('cadanganUlasan').value.trim()
+            };
+
+            await submitData(payload);
+        });
+
+        function getRadioValue(name) {
+            const el = document.querySelector(`input[name="${name}"]:checked`);
+            return el ? el.value : '';
+        }
+
+        async function submitData(payload) {
+            // Disable button & show loading state
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            document.getElementById('loading-modal').classList.remove('hidden');
+
+            try {
+                // If URL is placeholder or empty, simulate successful submission for preview mode
+                if (!GOOGLE_APPS_SCRIPT_URL || GOOGLE_APPS_SCRIPT_URL === "PASTE_WEB_APP_URL_HERE") {
+                    console.log("GOOGLE_APPS_SCRIPT_URL is not configured yet. Simulating success with payload:", payload);
+                    
+                    // Simulate network latency
+                    await new Promise(resolve => setTimeout(resolve, 1200));
+                    
+                    document.getElementById('loading-modal').classList.add('hidden');
+                    document.getElementById('success-modal').classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                // Send real POST request to Google Apps Script
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Standard mode for Google Apps Script Web Apps
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                document.getElementById('loading-modal').classList.add('hidden');
+                document.getElementById('success-modal').classList.remove('hidden');
+
+            } catch (error) {
+                console.error("Submission Error:", error);
+                document.getElementById('loading-modal').classList.add('hidden');
+                document.getElementById('error-message-text').textContent = "Ralat semasa membuat sambungan ke pelayan Google Apps Script. Sila semak semula URL Web App anda.";
+                document.getElementById('error-modal').classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        }
+
+        function closeErrorModal() {
+            document.getElementById('error-modal').classList.add('hidden');
+        }
+
+        function retrySubmission() {
+            closeErrorModal();
+            document.getElementById('evaluation-form').dispatchEvent(new Event('submit'));
+        }
+
+        function resetForm() {
+            document.getElementById('evaluation-form').reset();
+            document.getElementById('success-modal').classList.add('hidden');
+            
+            // Reset to today's date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('tarikh').value = today;
+            
+            // Clear highlights
+            REQUIRED_TEXT_FIELDS.concat(RATING_FIELDS).forEach(field => {
+                clearError(`group-${field}`);
+            });
+
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
